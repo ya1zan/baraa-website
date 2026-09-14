@@ -1,6 +1,4 @@
-
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 
 <head>
@@ -13,6 +11,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
@@ -32,35 +31,11 @@ body {
     background: #06130f;
     color: #ffffff;
     line-height: 1.8;
-    overflow-x: hidden;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    background: #16805a;
-    filter: blur(180px);
-    opacity: 0.14;
-    top: -150px;
-    right: -150px;
-    z-index: -1;
-    pointer-events: none;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    width: 450px;
-    height: 450px;
-    background: #d4af37;
-    filter: blur(180px);
-    opacity: 0.07;
-    bottom: -150px;
-    left: -150px;
-    z-index: -1;
-    pointer-events: none;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .container {
@@ -68,96 +43,65 @@ body::after {
     margin: auto;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header {
-    position: fixed;
-    top: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1150px, 92%);
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    background: rgba(6, 19, 15, 0.92);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.navbar {
+    min-height: 75px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 22px;
-    background: rgba(6, 19, 15, 0.82);
-    border: 1px solid rgba(212, 175, 55, 0.14);
-    border-radius: 20px;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow:
-        0 15px 50px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    gap: 25px;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 900;
+    color: #d4af37;
+    white-space: nowrap;
 }
 
-.logo-icon {
-    width: 38px;
-    height: 38px;
+.logo span {
+    color: #16805a;
+}
+
+.nav-links {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #16805a, #d4af37);
-    box-shadow: 0 0 25px rgba(22, 128, 90, 0.45);
+    gap: 28px;
+    list-style: none;
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-nav a {
-    position: relative;
-    padding: 8px 13px;
-    color: #aab8b0;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-nav a:hover {
+.nav-links a {
     color: #ffffff;
-    background: rgba(212, 175, 55, 0.06);
-}
-
-nav a::after {
-    content: "";
-    position: absolute;
-    right: 50%;
-    bottom: 2px;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #16805a, #d4af37);
-    transform: translateX(50%);
+    font-size: 15px;
+    font-weight: 600;
     transition: 0.3s;
 }
 
-nav a:hover::after {
-    width: 60%;
+.nav-links a:hover {
+    color: #d4af37;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
-#home {
-    min-height: 100vh;
+.hero-section {
+    min-height: calc(100vh - 75px);
     display: flex;
     align-items: center;
-    padding-top: 120px;
-    position: relative;
+    padding: 80px 0;
 }
 
 .hero {
@@ -168,61 +112,31 @@ nav a:hover::after {
 }
 
 .hero-content {
-    animation: heroIn 1s ease forwards;
+    position: relative;
 }
 
-@keyframes heroIn {
-    from {
-        opacity: 0;
-        transform: translateY(35px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 13px;
-    margin-bottom: 20px;
-    color: #d8c77a;
-    background: rgba(22, 128, 90, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.22);
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.hero h2 {
-    font-size: clamp(42px, 6vw, 76px);
-    line-height: 1.15;
+.hero-content h1 {
+    font-size: clamp(38px, 6vw, 72px);
+    line-height: 1.25;
     font-weight: 900;
-    margin-bottom: 22px;
-    letter-spacing: -2px;
+    margin-bottom: 25px;
 }
 
-.gradient-text {
-    background: linear-gradient(90deg, #ffffff, #43d17c, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+.hero-content h1 span {
+    color: #d4af37;
 }
 
-.hero p {
+.hero-content p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 18px;
     max-width: 650px;
-    color: #9caaa3;
-    font-size: 17px;
-    line-height: 2;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
-.hero-buttons {
+.buttons {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
@@ -230,45 +144,40 @@ nav a:hover::after {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 13px 22px;
-    border-radius: 13px;
-    text-decoration: none;
-    font-family: inherit;
-    font-weight: 800;
-    cursor: pointer;
+    min-width: 150px;
+    padding: 13px 25px;
+    border-radius: 12px;
+    font-weight: 700;
     transition: 0.3s;
-    border: none;
+    border: 1px solid transparent;
 }
 
 .btn-primary {
+    background: #16805a;
     color: #ffffff;
-    background: linear-gradient(135deg, #16805a, #b99728);
-    box-shadow: 0 10px 30px rgba(22, 128, 90, 0.25);
 }
 
 .btn-primary:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(22, 128, 90, 0.4);
+    transform: translateY(-3px);
+    background: #1a9569;
+    box-shadow: 0 10px 30px rgba(22, 128, 90, 0.25);
 }
 
-.btn-primary:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-    transform: none;
+.btn-outline {
+    border-color: rgba(212, 175, 55, 0.5);
+    color: #d4af37;
 }
 
-.btn-secondary {
-    color: #d8dedb;
-    border: 1px solid rgba(212, 175, 55, 0.13);
-    background: rgba(255, 255, 255, 0.035);
+.btn-outline:hover {
+    background: #d4af37;
+    color: #06130f;
+    transform: translateY(-3px);
 }
 
-.btn-secondary:hover {
-    background: rgba(212, 175, 55, 0.08);
-    transform: translateY(-4px);
-}
-
-/* HERO CARD */
+/* =========================
+   LARGE PROFILE IMAGE
+   تبقى الصورة الكبيرة
+========================= */
 
 .hero-card {
     position: relative;
@@ -276,13 +185,17 @@ nav a:hover::after {
     aspect-ratio: 1 / 1;
     margin: auto;
     border-radius: 35px;
+
     background: linear-gradient(
         145deg,
         rgba(22, 128, 90, 0.2),
         rgba(212, 175, 55, 0.06)
     );
+
     border: 1px solid rgba(212, 175, 55, 0.13);
+
     box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
+
     overflow: hidden;
 }
 
@@ -310,8 +223,6 @@ nav a:hover::after {
     left: -50px;
 }
 
-/* صورة HERO */
-
 .hero-symbol {
     position: absolute;
     inset: 0;
@@ -331,353 +242,285 @@ nav a:hover::after {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
-/* SECTIONS */
+/* =========================
+   SECTIONS
+========================= */
 
-section:not(#home) {
-    padding: 110px 0;
+section {
+    padding: 100px 0;
 }
 
-.section-heading {
+.section-title {
     text-align: center;
     margin-bottom: 55px;
 }
 
-.section-heading span {
-    display: inline-block;
-    color: #d4af37;
-    font-size: 13px;
-    font-weight: 800;
-    margin-bottom: 7px;
-}
-
-.section-heading h2 {
+.section-title h2 {
     font-size: 38px;
     font-weight: 900;
     margin-bottom: 12px;
 }
 
-.section-heading p {
-    color: #858f89;
-    max-width: 650px;
-    margin: auto;
+.section-title h2 span {
+    color: #d4af37;
 }
 
-/* ABOUT */
+.section-title p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================
+   GLASS CARDS
+========================= */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 25px;
+    padding: 35px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
 
 .about-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
-    align-items: stretch;
-}
-
-.glass-card {
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(212, 175, 55, 0.1);
-    border-radius: 22px;
-    backdrop-filter: blur(12px);
-    transition: 0.35s;
-}
-
-.glass-card:hover {
-    transform: translateY(-7px);
-    border-color: rgba(22, 128, 90, 0.35);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 .about-main h3 {
-    font-size: 25px;
-    margin-bottom: 14px;
+    font-size: 28px;
+    color: #d4af37;
+    margin-bottom: 20px;
 }
 
 .about-main p {
-    color: #d8e6df;
-    line-height: 2;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 17px;
 }
 
-/* SKILLS */
+/* =========================
+   SKILLS
+========================= */
 
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 25px;
 }
 
-.skill {
-    text-align: center;
-    padding: 27px 15px;
+.skill-card {
     background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(212, 175, 55, 0.09);
-    border-radius: 18px;
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 22px;
+    padding: 30px;
     transition: 0.3s;
 }
 
-.skill:hover {
+.skill-card:hover {
     transform: translateY(-7px);
-    background: rgba(22, 128, 90, 0.08);
-    border-color: rgba(22, 128, 90, 0.3);
+    border-color: rgba(212, 175, 55, 0.35);
 }
 
-.skill-icon {
-    font-size: 38px;
-    margin-bottom: 10px;
-}
-
-.skill h3 {
-    font-size: 15px;
-    margin-bottom: 12px;
+.skill-card h3 {
+    margin-bottom: 18px;
+    color: #ffffff;
 }
 
 .progress {
     width: 100%;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.08);
+    height: 9px;
     border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
     overflow: hidden;
 }
 
 .progress span {
     display: block;
     height: 100%;
-    border-radius: 20px;
-    background: linear-gradient(90deg, #16805a, #d4af37);
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        #16805a,
+        #d4af37
+    );
 }
 
-/* PROJECTS */
+.skill-card:nth-child(1) .progress span {
+    width: 80%;
+}
+
+.skill-card:nth-child(2) .progress span {
+    width: 75%;
+}
+
+.skill-card:nth-child(3) .progress span {
+    width: 70%;
+}
+
+/* =========================
+   PROJECTS
+========================= */
 
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-}
-
-.project {
-    position: relative;
-    padding: 30px;
-    min-height: 270px;
-    overflow: hidden;
-    background: linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.055),
-        rgba(255, 255, 255, 0.018)
-    );
-    border: 1px solid rgba(212, 175, 55, 0.09);
-    border-radius: 24px;
-    transition: 0.35s;
-}
-
-.project:hover {
-    transform: translateY(-8px);
-    border-color: rgba(22, 128, 90, 0.35);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
-}
-
-.project::before {
-    content: "";
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    background: #16805a;
-    filter: blur(100px);
-    opacity: 0.1;
-    top: -80px;
-    left: -80px;
-}
-
-.project-number {
-    color: #d4af37;
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.project h3 {
-    font-size: 25px;
-    margin: 14px 0;
-}
-
-.project p {
-    color: #929d97;
-    line-height: 2;
-    margin-bottom: 22px;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-bottom: 22px;
-}
-
-.tag {
-    padding: 5px 10px;
-    color: #b8c1bc;
-    background: rgba(255, 255, 255, 0.055);
-    border: 1px solid rgba(212, 175, 55, 0.08);
-    border-radius: 8px;
-    font-size: 11px;
-}
-
-/* CONTACT */
-
-.contact-box {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
     gap: 25px;
 }
 
-.contact-info h3 {
-    font-size: 27px;
-    margin-bottom: 12px;
-}
-
-.contact-info > p {
-    color: #929d97;
-    margin-bottom: 25px;
-}
-
-.contact-links {
-    display: grid;
-    gap: 10px;
-}
-
-.contact-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 12px;
-    color: #c8d0cc;
+.project-card {
+    position: relative;
     background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(212, 175, 55, 0.06);
-}
-
-.contact-link-icon {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    background: rgba(22, 128, 90, 0.12);
-}
-
-form {
-    display: grid;
-    gap: 14px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-}
-
-label {
-    display: block;
-    color: #cbd3cf;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 13px 15px;
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(212, 175, 55, 0.09);
-    border-radius: 12px;
-    outline: none;
-    font-family: inherit;
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 25px;
+    padding: 35px;
     transition: 0.3s;
 }
 
-input:focus,
-textarea:focus {
-    border-color: #16805a;
-    background: rgba(22, 128, 90, 0.05);
-    box-shadow: 0 0 0 3px rgba(22, 128, 90, 0.08);
+.project-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(212, 175, 55, 0.35);
 }
 
-textarea {
-    resize: vertical;
-    min-height: 140px;
+.project-card h3 {
+    color: #d4af37;
+    margin-bottom: 12px;
+    font-size: 25px;
 }
 
-input::placeholder,
-textarea::placeholder {
-    color: #626c67;
+.project-card p {
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 25px;
 }
 
-#formMessage {
-    display: none;
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: 700;
+.project-link {
+    color: #16805a;
+    font-weight: 800;
 }
 
-/* FOOTER */
-
-footer {
-    padding: 35px 0;
-    border-top: 1px solid rgba(212, 175, 55, 0.07);
-    text-align: center;
-    color: #68736d;
-    font-size: 13px;
-}
-
-footer strong {
+.project-link:hover {
     color: #d4af37;
 }
 
-/* ANIMATION */
+/* =========================
+   CONTACT
+========================= */
 
-section:not(#home) {
-    animation: sectionIn 0.8s ease;
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 30px;
 }
 
-@keyframes sectionIn {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
-/* SCROLLBAR */
-
-::-webkit-scrollbar {
-    width: 8px;
+.contact-item {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 18px;
+    padding: 22px;
 }
 
-::-webkit-scrollbar-track {
-    background: #06130f;
+.contact-item strong {
+    display: block;
+    color: #d4af37;
+    margin-bottom: 5px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(#16805a, #d4af37);
-    border-radius: 20px;
+.contact-item span {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* RESPONSIVE */
+.contact-form {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 25px;
+    padding: 35px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-family: inherit;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #d4af37;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form button {
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.contact-success,
+.contact-error {
+    display: none;
+    margin-top: 15px;
+    padding: 13px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.contact-success {
+    background: rgba(22, 128, 90, 0.15);
+    color: #53d49a;
+}
+
+.contact-error {
+    background: rgba(255, 70, 70, 0.1);
+    color: #ff8585;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding: 30px 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+footer span {
+    color: #d4af37;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 900px) {
-
-    header {
-        padding: 12px 15px;
-    }
-
-    nav {
-        display: none;
-    }
 
     .hero {
         grid-template-columns: 1fr;
@@ -685,63 +528,79 @@ section:not(#home) {
         gap: 45px;
     }
 
-    .hero p {
+    .hero-content p {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .hero-buttons {
+    .buttons {
         justify-content: center;
     }
 
-    .about-grid,
-    .contact-box {
+    .skills-grid {
         grid-template-columns: 1fr;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-
-    #home {
-        padding-top: 120px;
-    }
-
-    .hero h2 {
-        font-size: 42px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    section:not(#home) {
-        padding: 75px 0;
-    }
-
-    .section-heading h2 {
-        font-size: 30px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .projects-grid {
         grid-template-columns: 1fr;
     }
 
-    .form-row {
+    .contact-grid {
         grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .navbar {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
     }
 
     .hero-card {
         width: 290px;
     }
 
+    section {
+        padding: 75px 0;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    .glass-card,
+    .contact-form,
+    .project-card,
+    .skill-card {
+        padding: 25px;
+    }
+
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes rotateStar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 </style>
@@ -750,100 +609,94 @@ section:not(#home) {
 
 <body>
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
+<div class="container navbar">
+
 <a href="#home" class="logo">
-
-<span class="logo-icon">
-    ✦
-</span>
-
-<span>
-    براء عبد السلام
-</span>
-
+    ✦ براء <span>عبد السلام</span>
 </a>
 
-<nav>
+<ul class="nav-links">
 
-<a href="#home">
-    الرئيسية
-</a>
+<li>
+    <a href="#home">الرئيسية</a>
+</li>
 
-<a href="#about">
-    من أنا
-</a>
+<li>
+    <a href="#about">من أنا</a>
+</li>
 
-<a href="#skills">
-    مهاراتي
-</a>
+<li>
+    <a href="#skills">مهاراتي</a>
+</li>
 
-<a href="#projects">
-    مشاريعي
-</a>
+<li>
+    <a href="#projects">مشاريعي</a>
+</li>
 
-<a href="#contact">
-    تواصل معي
-</a>
+<li>
+    <a href="#contact">تواصل معي</a>
+</li>
 
-</nav>
+</ul>
+
+</div>
 
 </header>
 
-<main>
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
-<section id="home">
+<section class="hero-section" id="home">
 
-<div class="container">
+<div class="container hero">
 
-<div class="hero">
+<div class="hero-content">
 
-    <div class="hero-content">
+<h1>
+    أهلاً بك <br>
+    <span>برفــقــــتـــي</span>
+</h1>
 
-        <div class="hero-badge">
-        </div>
+<p>
+    مساحة تجمع المعرفة والوعي والأفكار المتجددة،
+    لنصنع معاً مستقبلاً أكثر صحة ووعياً.
+</p>
 
-        <h2>
-            أهلاً بك برفــقــــتـــي
-            <br>
-        </h2>
+<div class="buttons">
 
-        <div class="hero-buttons">
+<a href="#about" class="btn btn-primary">
+    تــــعـــــرف عــــلــــــي
+</a>
 
-            <a
-                href="#about"
-                class="btn btn-primary"
-            >
-                🌿 تــــعـــــرف عــــلــــــي
-            </a>
+<a href="#projects" class="btn btn-outline">
+    مشاريعي
+</a>
 
-            <a
-                href="#contact"
-                class="btn btn-secondary"
-            >
-                تواصل معي
-            </a>
+</div>
 
-        </div>
+</div>
 
-    </div>
 
-    <div class="hero-card">
+<!-- الصورة الكبيرة تبقى -->
 
-        <div class="hero-symbol">
+<div class="hero-card">
 
-            <img
-                src="profile.jpg"
-                alt="براء عبد السلام"
-            >
+<div class="hero-symbol">
 
-        </div>
+<img
+    src="profile.jpg"
+    alt="براء عبد السلام"
+>
 
-    </div>
+</div>
 
 </div>
 
@@ -851,56 +704,51 @@ section:not(#home) {
 
 </section>
 
-<!-- ABOUT -->
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about">
 
 <div class="container">
 
-<div class="section-heading">
+<div class="section-title">
 
-    <span>
-        ABOUT ME
-    </span>
+<h2>
+    من <span>أنا</span>
+</h2>
 
-    <h2>
-        من أنا؟
-    </h2>
-
-    <p>
-        نبذة عن براء واهتماماتها
-    </p>
+<p>
+    نبذة عني ورسالتي
+</p>
 
 </div>
 
+
 <div class="about-grid">
 
-    <!-- معلوماتي -->
+<div class="glass-card about-main">
 
-    <div class="glass-card about-main">
+<h3>
+    أهلاً، أنا براء عبد السلام 👋
+</h3>
 
-        <h3>
-            أهلاً، أنا براء عبد السلام 👋
-        </h3>
+<p>
+    حاصلة على شهادة البكالوريوس والماجستير في علوم الاغذية عام 2014
+    .وتدريسية في جامعة عراقية منذ عام 2016
+    وقبل ذلك كله انا أم لثلاثة اولاد وأسعى لبناء جيل صحي واعي
+    وافكار متجددة لواقع افضل.
+    <br><br>
 
-        <p>
+    وأؤمن بأهمية المعرفة والوعي
+    بما نتناوله وبما نشاهده وأثره على صحتنا النفسية,الفكرية,الجسدية.
+    اسعى إلى مشاركتك المعلومات
+    والأفكار التي تساعد في بناء جيل واعي افضل بكل المقاييس
+    مع حبي وتقديري.
+</p>
 
-            حاصلة على شهادة البكالوريوس والماجستير في علوم الاغذية عام 2014
-            .وتدريسية في جامعة عراقية منذ عام 2016
-            وقبل ذلك كله انا أم لثلاثة اولاد وأسعى لبناء جيل صحي واعي
-            وافكار متجددة لواقع افضل.
-
-            <br><br>
-
-            وأؤمن بأهمية المعرفة والوعي
-            بما نتناوله وبما نشاهده وأثره على صحتنا النفسية,الفكرية,الجسدية.
-            اسعى إلى مشاركتك المعلومات
-            والأفكار التي تساعد في بناء جيل واعي افضل بكل المقاييس
-            مع حبي وتقديري.
-
-        </p>
-
-    </div>
+</div>
 
 </div>
 
@@ -908,77 +756,69 @@ section:not(#home) {
 
 </section>
 
-<!-- SKILLS -->
+
+<!-- =========================
+     SKILLS
+========================= -->
 
 <section id="skills">
 
 <div class="container">
 
-<div class="section-heading">
+<div class="section-title">
 
-    <span>
-        MY Skills
-    </span>
+<h2>
+    <span>مهاراتي</span>
+</h2>
 
-    <h2>
-        مــــهـــــاراتـــــي
-    </h2>
-
-    <p>
-        المجالات التي أهتم بها وأعمل على تطوير معرفتي فيها.
-    </p>
+<p>
+    مجالات أهتم بها وأعمل على تطويرها
+</p>
 
 </div>
 
+
 <div class="skills-grid">
 
-    <div class="skill">
 
-        <div class="skill-icon">
-            🌿
-        </div>
+<div class="skill-card">
 
-        <h3>
-            التوعية الصحية
-        </h3>
+<h3>
+    التوعية الصحية
+</h3>
 
-        <div class="progress">
-            <span style="width: 80%;"></span>
-        </div>
+<div class="progress">
+    <span></span>
+</div>
 
-    </div>
+</div>
 
-    <div class="skill">
 
-        <div class="skill-icon">
-            🧠
-        </div>
+<div class="skill-card">
 
-        <h3>
-            التثقيف الغذائي
-        </h3>
+<h3>
+    التثقيف الغذائي
+</h3>
 
-        <div class="progress">
-            <span style="width: 75%;"></span>
-        </div>
+<div class="progress">
+    <span></span>
+</div>
 
-    </div>
+</div>
 
-    <div class="skill">
 
-        <div class="skill-icon">
-            ✨
-        </div>
+<div class="skill-card">
 
-        <h3>
-            مشروعي الذكي
-        </h3>
+<h3>
+    مشروعي الذكي
+</h3>
 
-        <div class="progress">
-            <span style="width: 70%;"></span>
-        </div>
+<div class="progress">
+    <span></span>
+</div>
 
-    </div>
+</div>
+
 
 </div>
 
@@ -986,123 +826,74 @@ section:not(#home) {
 
 </section>
 
-<!-- PROJECTS -->
+
+<!-- =========================
+     PROJECTS
+========================= -->
 
 <section id="projects">
 
 <div class="container">
 
-<div class="section-heading">
+<div class="section-title">
 
-    <span>
-        MY PROJECTS
-    </span>
+<h2>
+    <span>مشاريعي</span>
+</h2>
 
-    <h2>
-        مشاريعي
-    </h2>
-
-    <p>
-        بعض المشاريع والمنصات التي أشارك فيها.
-    </p>
+<p>
+    بعض المشاريع التي أعمل عليها
+</p>
 
 </div>
 
+
 <div class="projects-grid">
 
-    <article class="project">
 
-        <div class="project-number">
-            PROJECT 01
-        </div>
+<div class="project-card">
 
-        <h3>
-            رحلة وعي
-        </h3>
+<h3>
+    رحلة وعي
+</h3>
 
-        <p>
-            منصة إلكترونية تهتم بالتعليم والتوعية،
-            وتضم محتوى ودورات ومحاضرات في مجالات
-            الوعي والصحة والتطوير.
-        </p>
+<p>
+    منصة تعليمية تهدف إلى تطوير المهارات
+    وبناء مستقبل أكثر وعياً.
+</p>
 
-        <div class="project-tags">
+<a
+    href="https://a-journey-of-awareness.xo.je/"
+    target="_blank"
+    class="project-link"
+>
+    زيارة المشروع ←
+</a>
 
-            <span class="tag">
-                توعية
-            </span>
+</div>
 
-            <span class="tag">
-                صحة
-            </span>
 
-            <span class="tag">
-                تعليم
-            </span>
+<div class="project-card">
 
-            <span class="tag">
-                محتوى
-            </span>
+<h3>
+    صناع الوعي
+</h3>
 
-        </div>
+<p>
+    مشروع تعليمي يهتم بنشر المعرفة
+    وبناء جيل أكثر وعياً.
+</p>
 
-        <a
-            href="https://a-journey-of-awareness.xo.je/"
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            زيارة رحلة وعي →
-        </a>
+<a
+    href="https://ya1zan.github.io/my-academy/"
+    target="_blank"
+    class="project-link"
+>
+    زيارة المشروع ←
+</a>
 
-    </article>
+</div>
 
-    <article class="project">
-
-        <div class="project-number">
-            PROJECT 02
-        </div>
-
-        <h3>
-            صناع الوعي
-        </h3>
-
-        <p>
-            أكاديميه صناع الوعي مساحة خاصة للتعريف بمنتجات
-            ومشاركة المعلومات المتعلقة بها
-            والتواصل مع المهتمين.
-        </p>
-
-        <div class="project-tags">
-
-            <span class="tag">
-                DXN
-            </span>
-
-            <span class="tag">
-                منتجات
-            </span>
-
-            <span class="tag">
-                تغذية
-            </span>
-
-            <span class="tag">
-                توعية
-            </span>
-
-        </div>
-
-        <a
-            href="https://ya1zan.github.io/my-academy/"
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            زيارة المنصة →
-        </a>
-
-    </article>
 
 </div>
 
@@ -1110,177 +901,151 @@ section:not(#home) {
 
 </section>
 
-<!-- CONTACT -->
+
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section id="contact">
 
 <div class="container">
 
-<div class="section-heading">
+<div class="section-title">
 
-    <span>
-        CONTACT
-    </span>
+<h2>
+    تواصل <span>معي</span>
+</h2>
 
-    <h2>
-        تواصل معي
-    </h2>
-
-    <p>
-        للاستفسارات أو مشاركة فكرة يمكنك التواصل معي.
-    </p>
+<p>
+    يسعدني استقبال رسائلك ومقترحاتك
+</p>
 
 </div>
 
-<div class="contact-box">
 
-    <div class="glass-card contact-info">
+<div class="contact-grid">
 
-        <h3>
-            لنتحدث 👋
-        </h3>
 
-        <p>
-            إذا كنت تريد معرفة المزيد عن
-            علوم الأغذية أو التوعية الغذائية
-            أو المشاريع التي أعمل عليها،
-            يمكنك التواصل معي.
-        </p>
+<div class="contact-info">
 
-        <div class="contact-links">
 
-            <div class="contact-link">
+<div class="contact-item">
 
-                <div class="contact-link-icon">
-                    📧
-                </div>
+<strong>
+    البريد الإلكتروني
+</strong>
 
-                <div>
+<span>
+    baraabdalsalam89@gmail.com
+</span>
 
-                    البريد الإلكتروني
+</div>
 
-                    <br>
 
-                    <small>
-                        baraabdalsalam89@gmail.com
-                    </small>
+<div class="contact-item">
 
-                </div>
+<strong>
+    الهاتف
+</strong>
 
-            </div>
+<span>
+    07716884631
+</span>
 
-            <div class="contact-link">
+</div>
 
-                <div class="contact-link-icon">
-                    📱
-                </div>
 
-                <div>
+<div class="contact-item">
 
-                    الهاتف
+<strong>
+    الموقع
+</strong>
 
-                    <br>
+<span>
+    العراق
+</span>
 
-                    <small>
-                        07716884631
-                    </small>
+</div>
 
-                </div>
 
-            </div>
+</div>
 
-            <div class="contact-link">
 
-                <div class="contact-link-icon">
-                    📍
-                </div>
+<form
+    class="contact-form"
+    id="contactForm"
+    action="/.netlify/functions/send-telegram"
+    method="POST"
+>
 
-                <div>
+<div class="form-group">
 
-                    الموقع
+<label>
+    الاسم
+</label>
 
-                    <br>
+<input
+    type="text"
+    name="name"
+    required
+>
 
-                    <small>
-                        العراق
-                    </small>
+</div>
 
-                </div>
 
-            </div>
+<div class="form-group">
 
-        </div>
+<label>
+    البريد الإلكتروني
+</label>
 
-    </div>
+<input
+    type="email"
+    name="email"
+    required
+>
 
-    <div class="glass-card">
+</div>
 
-        <form id="contactForm">
 
-            <div class="form-row">
+<div class="form-group">
 
-                <div>
+<label>
+    الرسالة
+</label>
 
-                    <label for="name">
-                        الاسم
-                    </label>
+<textarea
+    name="message"
+    required
+></textarea>
 
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="اكتب اسمك"
-                        required
-                    >
+</div>
 
-                </div>
 
-                <div>
+<button
+    type="submit"
+    class="btn btn-primary"
+>
+    إرسال الرسالة
+</button>
 
-                    <label for="email">
-                        البريد الإلكتروني
-                    </label>
 
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="example@email.com"
-                        required
-                    >
+<div
+    class="contact-success"
+    id="contactSuccess"
+>
+    تم إرسال رسالتك بنجاح ✅
+</div>
 
-                </div>
 
-            </div>
+<div
+    class="contact-error"
+    id="contactError"
+>
+    حدث خطأ أثناء إرسال الرسالة ❌
+</div>
 
-            <div>
-
-                <label for="message">
-                    رسالتك
-                </label>
-
-                <textarea
-                    id="message"
-                    name="message"
-                    placeholder="اكتب رسالتك هنا..."
-                    required
-                ></textarea>
-
-            </div>
-
-            <button
-                type="submit"
-                class="btn btn-primary"
-                id="submitButton"
-            >
-                إرسال الرسالة 🚀
-            </button>
-
-            <div id="formMessage"></div>
-
-        </form>
-
-    </div>
+</form>
 
 </div>
 
@@ -1288,185 +1053,76 @@ section:not(#home) {
 
 </section>
 
-</main>
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
 <div class="container">
 
-<p>
-
-© 2026 جميع الحقوق محفوظة
-
-—
-
-<strong>
-    براء عبد السلام
-</strong>
-
-</p>
+© 2026 جميع الحقوق محفوظة — 
+<span>براء عبد السلام</span>
 
 </div>
 
 </footer>
 
-<!-- CONTACT FORM -->
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
-const contactForm =
-    document.getElementById("contactForm");
+const contactForm = document.getElementById("contactForm");
 
-const formMessage =
-    document.getElementById("formMessage");
+const contactSuccess =
+    document.getElementById("contactSuccess");
 
-const submitButton =
-    document.getElementById("submitButton");
+const contactError =
+    document.getElementById("contactError");
 
-contactForm.addEventListener(
-    "submit",
-    async function (event) {
 
-        event.preventDefault();
+contactForm.addEventListener("submit", async function(event) {
 
-        const name =
-            document.getElementById("name")
-            .value
-            .trim();
+    event.preventDefault();
 
-        const email =
-            document.getElementById("email")
-            .value
-            .trim();
+    contactSuccess.style.display = "none";
+    contactError.style.display = "none";
 
-        const message =
-            document.getElementById("message")
-            .value
-            .trim();
+    const formData = new FormData(contactForm);
 
-        if (!name || !email || !message) {
+    try {
 
-            formMessage.style.display =
-                "block";
-
-            formMessage.style.background =
-                "rgba(212, 175, 55, 0.10)";
-
-            formMessage.style.border =
-                "1px solid rgba(212, 175, 55, 0.25)";
-
-            formMessage.style.color =
-                "#d4af37";
-
-            formMessage.textContent =
-                "يرجى ملء جميع الحقول.";
-
-            return;
-        }
-
-        submitButton.disabled = true;
-
-        submitButton.textContent =
-            "جاري إرسال الرسالة...";
-
-        formMessage.style.display =
-            "none";
-
-        try {
-
-            const response =
-                await fetch(
-                    "/.netlify/functions/send-telegram",
-                    {
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-
-                        body: JSON.stringify({
-
-                            name: name,
-
-                            email: email,
-
-                            message: message
-
-                        })
-
-                    }
-                );
-
-            const result =
-                await response.json();
-
-            if (result.success) {
-
-                formMessage.style.display =
-                    "block";
-
-                formMessage.style.background =
-                    "rgba(22, 128, 90, 0.12)";
-
-                formMessage.style.border =
-                    "1px solid rgba(67, 209, 124, 0.25)";
-
-                formMessage.style.color =
-                    "#43d17c";
-
-                formMessage.textContent =
-                    "تم إرسال رسالتك بنجاح ✅";
-
-                contactForm.reset();
-
-            } else {
-
-                throw new Error(
-                    result.message ||
-                    "حدث خطأ أثناء الإرسال"
-                );
-
+        const response = await fetch(
+            contactForm.action,
+            {
+                method: "POST",
+                body: formData
             }
+        );
 
-        } catch (error) {
+        if (response.ok) {
 
-            console.error(
-                "Contact Form Error:",
-                error
-            );
+            contactSuccess.style.display = "block";
 
-            formMessage.style.display =
-                "block";
+            contactForm.reset();
 
-            formMessage.style.background =
-                "rgba(180, 50, 50, 0.10)";
+        } else {
 
-            formMessage.style.border =
-                "1px solid rgba(255, 100, 100, 0.20)";
-
-            formMessage.style.color =
-                "#ff8d8d";
-
-            formMessage.textContent =
-                "تعذر إرسال الرسالة، حاول مرة أخرى.";
+            contactError.style.display = "block";
 
         }
 
-        finally {
+    } catch (error) {
 
-            submitButton.disabled =
-                false;
-
-            submitButton.textContent =
-                "إرسال الرسالة 🚀";
-
-        }
+        contactError.style.display = "block";
 
     }
-);
+
+});
 
 </script>
 
